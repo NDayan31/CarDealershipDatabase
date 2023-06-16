@@ -30,10 +30,9 @@ public class LeaseDao {
             rows = preparedStatement.executeUpdate();
             System.out.println(rows + " row(s) updated!");
 
-            try (ResultSet key = preparedStatement.getGeneratedKeys()) {
-                while (key.next()) {
-                    System.out.printf("%d key was added\n",
-                            key.getLong(1));
+            try (ResultSet keys = preparedStatement.getGeneratedKeys()) {
+                while (keys.next()) {
+                    System.out.printf("%d key was added\n", keys.getLong(1));
                 }
             }
 
